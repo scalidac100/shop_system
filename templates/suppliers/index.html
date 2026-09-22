@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}
+Suppliers
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h2>
+            <i class="bi bi-truck"></i>
+            Suppliers
+        </h2>
+
+        <p class="text-muted">
+            Manage your product suppliers
+        </p>
+    </div>
+
+    <a
+        href="{{ url_for('suppliers.add') }}"
+        class="btn btn-primary"
+    >
+        <i class="bi bi-person-plus"></i>
+        Add Supplier
+    </a>
+
+</div>
+
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        {% if suppliers %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Supplier</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for supplier in suppliers %}
+
+                    <tr>
+
+                        <td>
+                            {{ supplier.id }}
+                        </td>
+
+                        <td>
+                            <strong>
+                                {{ supplier.name }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            <i class="bi bi-telephone"></i>
+                            {{ supplier.phone or "N/A" }}
+                        </td>
+
+                        <td>
+                            <i class="bi bi-geo-alt"></i>
+                            {{ supplier.address or "N/A" }}
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{{ url_for('suppliers.edit', id=supplier.id) }}"
+                                class="btn btn-sm btn-warning"
+                            >
+                                <i class="bi bi-pencil"></i>
+                                Edit
+                            </a>
+
+                            <a
+                                href="{{ url_for('suppliers.delete', id=supplier.id) }}"
+                                class="btn btn-sm btn-danger"
+                                onclick="return confirm('Delete this supplier?')"
+                            >
+                                <i class="bi bi-trash"></i>
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="text-center py-5">
+
+            <i
+                class="bi bi-truck"
+                style="font-size: 50px;"
+            ></i>
+
+            <h5 class="mt-3">
+                No suppliers found
+            </h5>
+
+            <p class="text-muted">
+                Start by adding your first supplier.
+            </p>
+
+            <a
+                href="{{ url_for('suppliers.add') }}"
+                class="btn btn-primary"
+            >
+                <i class="bi bi-person-plus"></i>
+                Add Supplier
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

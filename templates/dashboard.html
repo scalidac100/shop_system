@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h2>
+        <i class="bi bi-speedometer2"></i>
+        Dashboard
+    </h2>
+
+    <p class="text-muted">
+        Welcome to your Shop Management System
+    </p>
+
+</div>
+
+
+<!-- STATISTICS -->
+
+<div class="row g-4">
+
+
+    <!-- PRODUCTS -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <h6 class="text-muted">
+                            Products
+                        </h6>
+
+                        <h2>
+                            {{ products_count }}
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-1 text-primary">
+
+                        <i class="bi bi-box-seam"></i>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="{{ url_for('products.index') }}"
+                    class="text-decoration-none"
+                >
+                    View Products →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <h6 class="text-muted">
+                            Categories
+                        </h6>
+
+                        <h2>
+                            {{ categories_count }}
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-1 text-success">
+
+                        <i class="bi bi-tags"></i>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="{{ url_for('categories.index') }}"
+                    class="text-decoration-none"
+                >
+                    View Categories →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CUSTOMERS -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <h6 class="text-muted">
+                            Customers
+                        </h6>
+
+                        <h2>
+                            {{ customers_count }}
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-1 text-warning">
+
+                        <i class="bi bi-people"></i>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="{{ url_for('customers.index') }}"
+                    class="text-decoration-none"
+                >
+                    View Customers →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUPPLIERS -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <h6 class="text-muted">
+                            Suppliers
+                        </h6>
+
+                        <h2>
+                            {{ suppliers_count }}
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-1 text-danger">
+
+                        <i class="bi bi-truck"></i>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="{{ url_for('suppliers.index') }}"
+                    class="text-decoration-none"
+                >
+                    View Suppliers →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- QUICK ACTIONS -->
+
+<div class="card shadow-sm border-0 mt-4">
+
+    <div class="card-body">
+
+        <h5 class="mb-3">
+            <i class="bi bi-lightning"></i>
+            Quick Actions
+        </h5>
+
+        <a
+            href="{{ url_for('products.add') }}"
+            class="btn btn-primary me-2"
+        >
+            <i class="bi bi-plus-circle"></i>
+            Add Product
+        </a>
+
+        <a
+            href="{{ url_for('customers.add') }}"
+            class="btn btn-success me-2"
+        >
+            <i class="bi bi-person-plus"></i>
+            Add Customer
+        </a>
+
+        <a
+            href="{{ url_for('suppliers.add') }}"
+            class="btn btn-warning"
+        >
+            <i class="bi bi-truck"></i>
+            Add Supplier
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
