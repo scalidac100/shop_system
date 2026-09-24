@@ -13,10 +13,15 @@ from models.product import Product
 from models.customer import Customer
 from models.supplier import Supplier
 
-from routes.categories import categories_bp
 from routes.products import products_bp
 from routes.customers import customers_bp
 from routes.suppliers import suppliers_bp
+from routes.categories import categories_bp
+
+app.register_blueprint(products_bp)
+app.register_blueprint(customers_bp)
+app.register_blueprint(suppliers_bp)
+app.register_blueprint(categories_bp)
 
 @app.route("/")
 def home():
