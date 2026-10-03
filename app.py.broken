@@ -14,12 +14,10 @@ from models.customer import Customer
 from models.supplier import Supplier
 from models.user import User
 
-
 from routes.products import products_bp
 from routes.customers import customers_bp
 from routes.suppliers import suppliers_bp
 from routes.categories import categories_bp
-from routes.users import users_bp
 from routes.auth import auth_bp
 
 app.register_blueprint(products_bp)
@@ -27,7 +25,6 @@ app.register_blueprint(customers_bp)
 app.register_blueprint(suppliers_bp)
 app.register_blueprint(categories_bp)
 app.register_blueprint(auth_bp)
-app.register_blueprint(users_bp)
 
 @app.route("/")
 def home():

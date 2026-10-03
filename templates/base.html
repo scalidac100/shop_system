@@ -47,10 +47,11 @@
 
         <ul class="nav nav-pills flex-column gap-2">
 
+            <!-- Dashboard -->
             <li class="nav-item">
 
                 <a
-                    href="/"
+                    href="{{ url_for('home') }}"
                     class="nav-link text-white"
                 >
                     <i class="bi bi-speedometer2"></i>
@@ -59,6 +60,7 @@
 
             </li>
 
+            <!-- Categories -->
             <li class="nav-item">
 
                 <a
@@ -71,6 +73,7 @@
 
             </li>
 
+            <!-- Products -->
             <li class="nav-item">
 
                 <a
@@ -83,6 +86,7 @@
 
             </li>
 
+            <!-- Customers -->
             <li class="nav-item">
 
                 <a
@@ -95,6 +99,7 @@
 
             </li>
 
+            <!-- Suppliers -->
             <li class="nav-item">
 
                 <a
@@ -103,6 +108,33 @@
                 >
                     <i class="bi bi-truck"></i>
                     Suppliers
+                </a>
+
+            </li>
+{% if session.get("role") == "admin" %}
+
+<li class="nav-item">
+
+    <a
+        href="{{ url_for('users.index') }}"
+        class="nav-link text-white"
+    >
+        <i class="bi bi-person-gear"></i>
+        Users
+    </a>
+
+</li>
+
+{% endif %}
+            <!-- Logout -->
+            <li class="nav-item mt-3">
+
+                <a
+                    href="{{ url_for('auth.logout') }}"
+                    class="nav-link text-danger"
+                >
+                    <i class="bi bi-box-arrow-right"></i>
+                    Logout
                 </a>
 
             </li>
@@ -125,8 +157,15 @@
             </span>
 
             <span class="text-muted">
+
                 <i class="bi bi-person-circle"></i>
-                Administrator
+
+                {{ session.get("username", "User") }}
+
+                <span class="badge bg-secondary">
+                    {{ session.get("role", "staff") }}
+                </span>
+
             </span>
 
         </nav>
