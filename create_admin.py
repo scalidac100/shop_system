@@ -4,14 +4,26 @@ from models.user import User
 
 with app.app_context():
 
-    admin = User(
-        username="admin",
-        role="admin"
-    )
+    # Create all database tables
+    db.create_all()
 
-    admin.set_password("admin123")
+    # Check if admin already exists
+    admin = User.query.filter_by(
+        username="admin"
+    ).first()
 
-    db.session.add(admin)
-    db.session.commit()
+    if admin:
+        print("Admin already exists!")
 
-    print("Admin created successfully!")
+    else:
+        admin = User(
+            username="admin",
+            role="admin"
+        )
+
+        admin.set_password("admin123")
+
+        db.session.add(admin)
+        db.session.commit()
+
+        print("Admin created successfully!")
